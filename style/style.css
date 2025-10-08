@@ -7,3 +7,498 @@
  	padding-left: 0;
  	list-style: none;
  }
+
+    @font-face {
+            font-family: 'Montserrat_font';
+            src: url('../font/Montserrat-Light.ttf') format('truetype');
+        }
+         @font-face {
+            font-family: 'Tahoma_font';
+            src: url('../font/tahoma.ttf') format('truetype');
+        }
+
+
+
+
+
+
+    :root{
+      --bg:#0b0f14;
+      --panel:#0f1720;
+      --muted:#98a0ad;
+      --accent:#FFFE00;
+      --glass: rgba(255,255,255,0.03);
+      --card: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --radius:14px;
+      --sidebar-width:260px;
+      --gap:18px;
+      /*font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;*/
+      font-family:Montserrat_font,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+
+    }
+
+    a {
+      color: inherit;
+    }
+    .subtitle {
+      color: #FFFE00; font-family: 'Tahoma_font'; text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(125,211,252,0.03), transparent),
+                  radial-gradient(900px 500px at 90% 90%, rgba(139,92,246,0.03), transparent),
+                  var(--bg);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:18px;
+      display:block;
+      min-height:100vh;
+      background-attachment:fixed;
+      transition:background .25s;
+    }
+
+
+.hamburgerDiv {
+      color: rgb(255, 255, 0);
+      z-index:130;
+      position: fixed;
+      padding:12px;
+    }
+
+
+
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  margin: 0;
+}
+
+.brand-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+
+
+
+/* Layout */
+    .sidebar{
+      width:var(--sidebar-width);
+      background:var(--card);
+      position:fixed;
+      left:0;
+      top:0;
+      bottom:0;
+      height:100vh;
+      border-radius:0 12px 12px 0;
+      padding:18px;
+      box-shadow:0 6px 30px rgba(3,7,18,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px);
+      transition:transform .28s ease, opacity .28s ease;
+      z-index:100;
+      overflow:auto;
+    }
+    /* default hidden class (can be toggled) */
+    .sidebar.hidden{transform:translateX(-120%);opacity:0;pointer-events:none}
+
+    h1,h2,h3,h4, strong {
+      font-weight: normal;
+      color: white;
+    }
+
+    h1{font-size:16px;margin:0;}
+    .tag{font-size:12px;color:var(--muted)}
+
+    .nav{margin-top:12px}
+    .nav a{display:flex;align-items:center;gap:12px;padding:6px;color:var(--muted);text-decoration:none;margin-bottom:6px}
+    .nav ul {
+      list-style-type: none;
+    }
+    .nav ul a {
+      padding: 0;
+    }
+    .nav a.active{background:linear-gradient(90deg, rgba(255,255,0,0.06), rgba(139,92,246,0.04));color:var(--accent);}
+
+    .main{
+      margin-left: calc(var(--sidebar-width) + var(--gap));
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      min-height:100vh;
+      padding:18px 18px 36px 18px;
+    }
+
+    .controls{display:flex;gap:8px;align-items:center}
+
+     /* Mobile menu button */
+    .mobile-menu-btn{
+      display:none; /* visible in media rules */
+      align-items:center;
+      justify-content:center;
+      width:44px;
+      height:44px;
+
+
+    /* Appliquer l'effet de flou sur l'arrière-plan */
+    backdrop-filter: blur(5px); /* Définit l'intensité du flou */
+    -webkit-backdrop-filter: blur(5px); /* Pour les anciens navigateurs WebKit comme Safari */
+
+
+      border-radius:10px;
+      border:1px solid rgba(255,255,0,0.04);
+      background: rgba(255,255,0,0.02);
+      color:inherit;
+      cursor:pointer;
+      z-index:120;
+    }
+    .mobile-menu-btn:focus{outline:3px solid rgba(255,255,0,0.22);outline-offset:3px}
+
+    /* overlay that appears when sidebar is open on small screens */
+    .sidebar-overlay{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,0.45);
+      z-index:90;
+      display:none;
+      opacity:0;
+      transition:opacity .2s ease;
+    }
+    .sidebar-overlay.visible{display:block;opacity:1}
+
+
+
+    .badget{display:inline-block;color:var(--muted);margin-bottom:10px; font-size: 16px}
+    h2{margin:0;font-size:22px;}
+    .cta{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--accent);margin-top:14px;margin-bottom: 1rem;/*padding:12px 16px;border:1px solid var(--accent);*/cursor:pointer;text-decoration:underline;}
+
+    .poster{height:240px;background:#000;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:#fff}
+    .poster h3{margin:0}
+    .poster p{margin:6px 0 12px;color:rgba(255,255,255,0.9);font-size:14px}
+
+    .section{margin-top:6px; margin-bottom: 1rem}
+    /*.section h3{margin:0 0 12px 0;font-size:18px}*/
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+
+    .card{
+      display:block;
+      text-decoration:none;
+      color:inherit;
+      border-radius:12px;
+      overflow:hidden;
+      position:relative;
+      transition:transform .18s ease, box-shadow .18s ease;
+      background:var(--card);
+      border:1px solid rgba(255,255,255,0.02);
+      min-height:120px;
+    }
+    .card:active{transform:translateY(1px)}
+    .card:focus{outline:3px solid rgba(125,211,252,0.18);outline-offset:2px;border-radius:10px}
+
+    .thumb{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+      background:#0b0f14;
+    }
+    .thumb::before{content:"";display:block;padding-top:56.25%;}
+    .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+    /* Play button overlay - hidden by default; appears on hover or focus-within */
+    .thumb .overlay{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none; /* overlay itself shouldn't block clicks on the anchor */
+    }
+
+    /* Hidden by default: opacity 0 + small scale/translate for subtle motion */
+    .play-button{
+      pointer-events:auto; /* allow the button itself to receive pointer if needed (but click will be the anchor) */
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:56px;height:56px;border-radius:999px;
+      background:rgba(255,255,255,1);
+      border:1px solid rgba(255,255,255,0.04);
+      transition:transform .16s ease, background .16s ease, opacity .18s ease;
+      opacity:0;
+      transform:translateY(6px) scale(.94);
+      box-shadow:0 6px 20px rgba(2,6,15,0.6);
+    }
+    .play-button svg{width:18px;height:18px;fill:black;margin-left:3px}
+
+    /* show on hover and on keyboard focus */
+    .card:hover .thumb .overlay .play-button,
+    .card:focus-within .thumb .overlay .play-button{
+      opacity:1;
+      transform:translateY(0) scale(1);
+    }
+
+    /* keep small scale-up on hover for extra feedback */
+    .card:hover .play-button{transform:translateY(0) scale(1.06)}
+
+    .meta{padding:10px}
+    .meta h4{margin:0;font-size:14px}
+    .meta p{margin:6px 0 0 0;color:var(--muted);font-size:13px}
+
+    .pill{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-size:12px;color:var(--muted)}
+
+
+ /* Responsive rules (desktop -> tablet -> mobile) */
+    @media (max-width:992px){
+      body{padding-top:76px}
+      /* on tablet/mobile keep sidebar positioned but hidden by default; toggle with .open class */
+      .sidebar{
+        left:16px;
+        top:80px;
+        height:calc(100vh - 96px);
+        transform:translateX(-120%);
+        border-radius:12px;
+        opacity:0;
+        pointer-events:none;
+      }
+      .sidebar.open{ transform:translateX(0); opacity:1; pointer-events:auto; }
+      .main{
+        margin-left:0;
+        padding:12px;
+      }
+      .controls{display:none}
+
+      .poster{height:200px}
+      .grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+      .search{padding:10px}
+
+      .mobile-menu-btn{ display:inline-flex; position:fixed;  z-index:130; }
+      .sidebar-overlay{ display:none; /* toggled via JS */ }
+    }
+
+    @media (max-width:640px){
+      body{padding:12px;gap:12px}
+      /* remove previous display:none for sidebar — handled via .open/.hidden */
+      .main{margin-left:0;margin-top: 64px}
+      h2{font-size:20px}
+      .poster{height:160px}
+      .grid{grid-template-columns:1fr !important; gap:12px}
+      .grid .card{min-height:auto}
+      .grid .thumb::before{padding-top:56.25%}
+      .grid .meta{padding:12px 10px}
+      .grid{gap:14px}
+      .meta h4{font-size:15px}
+      .meta p{font-size:13px}
+      .cta{font-size:14px}
+
+      /* ensure mobile button sits nicely (if top area crowded) */
+      .mobile-menu-btn{ }
+    }
+
+      .card.dark .meta{display:none}
+      .card.dark .thumb img{filter:grayscale(100%) brightness(0.18) contrast(0.9);transform:scale(1.02)}
+      .card.dark .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6));}
+
+    @media (max-width:640px){
+      .card.dark .meta{display:none}
+    }
+
+    /* On touch devices there's no hover: make play affordance visible so users understand it's playable.
+       We detect non-hovering devices with hover: none query. */
+    @media (hover: none) {
+      .play-button{
+        opacity:1;
+        transform:translateY(0) scale(1);
+      }
+    }
+
+
+    .show-focus :focus{outline:2px solid rgba(125,211,252,0.22);outline-offset:3px;border-radius:8px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          /* Header */
+    .header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+    .title-block{display:flex;flex-direction:column; margin-bottom: 1rem}
+    .kicker{font-size:12px;color:var(--muted);margin-bottom:6px}
+    .title-movie-section{margin:0;font-size:26px;letter-spacing:-0.2px}
+    .meta-line{color:var(--muted);font-size:13px;margin-top:6px}
+
+
+    /* Layout grid: left poster + right content */
+    .grid2{display:grid;grid-template-columns:280px 1fr;gap:20px;align-items:start}
+
+    /* Poster card */
+    .poster-card{border-radius:12px;overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,0.03);padding:0}
+.poster-card{  overflow:hidden; border-radius:12px; }
+
+.poster-img{
+  width:100%;
+  height:auto;
+  aspect-ratio: 3 / 4;   /* garde la proportion portrait */
+  object-fit: cover;     /* crop si nécessaire */
+  display:block;
+}
+    .poster-body{padding:12px;display:flex;flex-direction:column;gap:10px}
+    .poster-badges{display:flex;gap:8px;flex-wrap:wrap}
+    .badge{background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);font-size:13px;color:var(--muted)}
+
+
+
+
+
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#071522}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+
+    /* Player block (prominent) */
+    .player-card{border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.03)}
+    .player-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+    .player-embed{position:relative;padding-top:56.25%;background:#000}
+    .player-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    /* Content sections */
+    .content{display:flex;flex-direction:column;gap:12px; color:var(--muted);}
+    .section{padding:12px;border-radius:10px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+    .section h3{margin:0 0 8px 0}
+    .section2 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    .credits small{color:var(--muted)}
+
+    /* Footer / related */
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+    .related .card{padding:0}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .grid2{grid-template-columns:1fr}
+      .poster-img{height:300px}
+    }
+    @media (max-width:640px){
+      .wrap{padding:6px}
+      .title-movie-section{font-size:20px}
+      .poster-img{height:220px}
+    }
+
+    /* Small util */
+    .muted{color:var(--muted)}
+
+
+
+
+
+
+
+
+
+    
+/* --- overlay + play button --- */
+.player-embed { position:relative; padding-top:56.25%; background:#000; overflow:hidden; }
+
+/* overlay that sits above the iframe */
+.video-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  transition:opacity .35s ease, visibility .35s ease;
+  z-index:3;
+  cursor:pointer;
+  /* subtle dark layer for contrast */
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.25);
+}
+
+/* hidden state after click */
+.video-overlay.hidden{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+/* big circular play button */
+.play-btn{
+  display:inline-grid;
+  place-items:center;
+  width:80px;
+  height:80px;
+  border-radius:999px;
+  border:0;
+  background:rgba(255,255,255,0.95);
+  box-shadow:0 6px 20px rgba(2,6,15,0.6);
+  cursor:pointer;
+  transform:translateY(0);
+  transition:transform .18s ease;
+}
+
+/* hover/tap feedback */
+.video-overlay:focus .play-btn,
+.video-overlay:hover .play-btn{ transform:translateY(-4px); }
+
+/* triangle (play icon) made with SVG inside button — no extra CSS required */
+
+/* ensure iframe fills area (already present but included for clarity) */
+.player-embed iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+  z-index:1; /* under the overlay */
+}
+
+/* small: make overlay image still visible on narrow screens */
+@media (max-width:640px){
+  .play-btn{ width:72px; height:72px; }
+}
