@@ -419,6 +419,29 @@
       <a href="#contact">Contact</a>
     </nav>
 
+    <script>
+  // Sélectionner tous les liens
+  const links = document.querySelectorAll('.nav a');
+  
+  // Ajouter un événement de clic à chaque lien
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      // Empêcher le comportement par défaut (navigation immédiate)
+      //e.preventDefault();
+      
+      // Retirer la classe 'active' de tous les liens
+      links.forEach(link => link.classList.remove('active'));
+      
+      // Ajouter la classe 'active' au lien cliqué
+      this.classList.add('active');
+      
+      // Optionnel : Si tu veux que la page défile vers la section liée
+      // window.location.href = this.href; // Décommente si tu veux un changement d'URL
+    });
+  });
+</script>
+
+
     <div style="margin-top:auto;font-size:13px;color:var(--muted);padding-top:16px">© Sous les titres · 2025</div>
   </aside>
 
