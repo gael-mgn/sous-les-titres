@@ -285,7 +285,7 @@
       .grid{gap:14px}
       .meta h4{font-size:15px}
       .meta p{font-size:13px}
-      .cta{padding:10px 12px;font-size:14px}
+      .cta{font-size:14px}
 
       /* ensure mobile button sits nicely (if top area crowded) */
       .mobile-menu-btn{ }
@@ -505,7 +505,7 @@
         </div>
       </div>
 
-      <div class="hero-right">
+      <div class="hero-right no-mobile">
   <div class="poster" role="img" aria-label="Poster du documentaire"
        style="
          background-image: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('films/le jour des 13 heures/le-jour-des-13-heures.webp');
@@ -526,7 +526,8 @@
 
     </section>
 
-    <section class="section" aria-label="Catalogue">
+    <!--anciennement class=section, joli sur ordinateur, à voir pour supprimer le padding de seccition et le fond sur smartphone-->
+    <section class="section2" aria-label="Catalogue">
       <h2 class="badget">[Catalogue]</h2>
 
       <div class="grid" id="featured">
@@ -624,6 +625,10 @@
     .content{display:flex;flex-direction:column;gap:12px; color:var(--muted);}
     .section{padding:12px;border-radius:10px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
     .section h3{margin:0 0 8px 0}
+    .section2 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
     .credits small{color:var(--muted)}
 
     /* Footer / related */
@@ -727,7 +732,7 @@
 
         <div class="grid2">
       <!-- Left: poster, badges, actions -->
-      <aside class="poster-card" aria-labelledby="film-title">
+      <aside class="poster-card no-mobile" aria-labelledby="film-title">
 
          <img class="poster-img" src="films/le jour des 13 heures/affiche.webp"
        srcset=""
