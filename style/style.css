@@ -502,3 +502,20 @@
 @media (max-width:640px){
   .play-btn{ width:72px; height:72px; }
 }
+
+
+
+.biblio {
+  padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);color:var(--muted); text-align: justify;
+}
+
+
+
+ @media (max-width:640px){
+  .biblio {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  text-align: left;
+}
+ }
