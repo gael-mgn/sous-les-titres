@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sous les titres — Gaël Maignan</title>
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="icon" href="favicon.png" type="image/png">
+
+  <meta name="description" content="Gaël Maignan est auteur et réalisateur. Il fonde en 2025 le projet documentaire Sous les titres, dédié à l’observation du réel à travers des formes brutes et contemplatives. Son premier film, Le jour des 13 heures, tourné à Athènes lors de la grève générale du 1ᵉʳ octobre 2025, ouvre une série d’œuvres explorant les rapports entre image, parole et espace public.">
+  <meta name="keywords" content="Gaël Maignan, gael maignan, film, documentaire, film documentaire, réalisation, auteur">
+
+
+  <meta property="og:image" content="http://sous-les-titres.fr/img/sous-les-titres.webp">
+
+   <script src="js/script.js"></script>
+  <script type="module" src="https://gael-mgn.github.io/js/log.js"></script>
+
+  <link rel="stylesheet" href="style/style.css">
+
+
+
+</head>
+<body>
+  <div class="hamburgerDiv">
+    <!-- Mobile menu button (hamburger) -->
+  <button id="mobileMenuBtn" class="mobile-menu-btn" aria-controls="sidebar" aria-expanded="false" aria-label="Ouvrir le menu">
+    <!-- simple hamburger icon -->
+    <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect y="0.5" width="20" height="2" rx="1" fill="currentColor"/>
+      <rect y="6" width="20" height="2" rx="1" fill="currentColor"/>
+      <rect y="11.5" width="20" height="2" rx="1" fill="currentColor"/>
+    </svg>
+  </button></div>
+
+  <!-- overlay shown behind sidebar when open on small screens -->
+  <div id="sidebarOverlay" class="sidebar-overlay" aria-hidden="true"></div>
+
+
+  <aside id="sidebar" class="sidebar" aria-label="Navigation" aria-hidden="false">
+    <!--<div class="brand">
+      <div class="logo">
+  <img src="favicon.png" alt="Logo">
+</div>-->
+
+<a href="index.html" class="brand">
+  <div class="brand-logo">
+    <img src="favicon800.png" alt="Logo de la marque">
+  </div>
+  <div class="brand-text">
+    <h1 class="brand-title">Sous les titres</h1>
+    <p class="brand-subtitle">Films documentaires</p>
+  </div>
+</a>
+
+
+    </div>
+
+    <nav class="nav subtitle" aria-label="Primary">
+      <a href="index.html#home">Accueil</a>
+      <a href="index.html#films">Films</a>
+      <a href="index.html#about">À propos</a>
+      <!--<a href="#">Collections : Sous les titres...</a>
+      <ul>
+        <li><a href="#"><span class="subtitle">[de la presse]</span></a></li>
+        <li><a href="#"><span class="subtitle">[les honneurs]</span></a></li>
+      </ul>-->
+      <a href="#contact">Contact</a>
+    </nav>
+
+
+
+    <div style="margin-top:auto;font-size:13px;color:var(--muted);padding-top:16px">© Sous les titres · 2025</div>
+  </aside>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('mobileMenuBtn');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+
+      if(!btn || !sidebar || !overlay) return;
+
+      function openSidebar(){
+        sidebar.classList.add('open');
+        sidebar.classList.remove('hidden');
+        overlay.classList.add('visible');
+        overlay.setAttribute('aria-hidden','false');
+        sidebar.setAttribute('aria-hidden','false');
+        btn.setAttribute('aria-expanded','true');
+        btn.setAttribute('aria-label','Fermer le menu');
+        // move focus to first link in sidebar for accessibility
+        const firstLink = sidebar.querySelector('a, button, [tabindex="0"]');
+        if(firstLink) firstLink.focus();
+      }
+
+      function closeSidebar(){
+        sidebar.classList.remove('open');
+        sidebar.classList.add('hidden');
+        overlay.classList.remove('visible');
+        overlay.setAttribute('aria-hidden','true');
+        sidebar.setAttribute('aria-hidden','true');
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Ouvrir le menu');
+        // restore focus to menu button
+        btn.focus({preventScroll:true});
+      }
+
+      btn.addEventListener('click', function(e){
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if(expanded) closeSidebar(); else openSidebar();
+      });
+
+      overlay.addEventListener('click', function(){ closeSidebar(); });
+
+      // close on Escape
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' || e.key === 'Esc'){
+          // only close if sidebar is open
+          if(sidebar.classList.contains('open')) closeSidebar();
+        }
+      });
+
+      // If we resize to desktop, ensure sidebar is visible / aria restored
+      function handleResize(){
+        if(window.innerWidth > 992){
+          // show permanently
+          sidebar.classList.remove('hidden');
+          sidebar.classList.remove('open');
+          overlay.classList.remove('visible');
+          overlay.setAttribute('aria-hidden','true');
+          sidebar.setAttribute('aria-hidden','false');
+          btn.setAttribute('aria-expanded','false');
+          btn.setAttribute('aria-hidden','true'); // hide mobile toggle for larger screens
+        }else{
+          btn.removeAttribute('aria-hidden');
+          // on small screens keep menu hidden by default (unless manually opened)
+          if(!sidebar.classList.contains('open')){
+            sidebar.classList.add('hidden');
+            sidebar.setAttribute('aria-hidden','true');
+          }
+        }
+      }
+      window.addEventListener('resize', handleResize);
+      // initial
+      handleResize();
+    })();
+  </script>
+
+
+
+  <main class="main" id="home" aria-live="polite">
+   
+
+    <div class="header" id="a-la-une">
+      <div class="title-block">
+        <!--<div class="kicker">SÉRIE — Sélection</div>-->
+        <h2 class="title-movie-section">Gaël Maignan</h2><span class="subtitle">Réalisation / Écriture</span></div>
+      </div>
+
+
+    </div>
+
+
+<section class="section" id="biblio">
+      <h2 class="badget">[À propos]</h2>
+      <div class="biblio">
+        <p style="margin:0 0 8px 0; font-size: 0.9rem;">Gaël Maignan est auteur et réalisateur.<br><br>Il fonde en 2025 le projet documentaire <em>Sous les titres</em>, dédié à l’observation du réel à travers des formes brutes et contemplatives.<br>
+Son premier film, <a href="films/le jour des 13 heures/le jour des 13 heures.html"><em>Le jour des 13 heures</em></a>, tourné à Athènes lors de la grève générale du 1ᵉʳ octobre 2025, ouvre une série d’œuvres explorant les rapports entre image, parole et espace public.</p>
+   
+
+
+      </div>
+    </section>
+
+
+
+    <section class="section" id="biblio">
+      <h2 class="badget">[Filmographie]</h2>
+      <div class="biblio">
+        <h3><span class="subtitle"><a href="films/le jour des 13 heures/le jour des 13 heures.html">[Réalisation / Écriture] : Le jour des 13 heures (2025)</a></span></h3>
+        <p style="margin:0 0 8px 0; font-size: 0.9rem;">Athènes, 1ᵉʳ octobre 2025. La Grèce vit au ralenti : syndicats et travailleurs observent une grève générale contre la réforme autorisant des journées de travail de treize heures.<br>
+[Au milieu de la foule, Panos Ruci poursuit sa grève de la faim en mémoire de son fils, victime du drame ferroviaire de Tempi, rappelant que le combat pour la justice ne s’arrête pas aux revendications sociales.]<br>
+Ce film suit, une journée de rassemblements et de voix qui résonnent place Syntagma.</p>
+   
+
+
+      </div>
+    </section>
+
+
+
+
+<section class="section" id="contact">
+      <h2 class="badget">[Contact]</h2>
+      <div style="padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);color:var(--muted)">
+        <p>Pour toute prise de contact : <a href="mailto:gael.maignan@sous-les-titres.fr" class="subtitle">gael.maignan@sous-les-titres.fr</a></p>
+        <p>Liens externes : <a href="https://www.imdb.com/fr/name/nm17304284/" target="_blank">IMDb</a> - <a href="https://www.film-documentaire.fr/4DACTION/w_fiche_createur/157870" target="_blank">film-documentaire.fr</a> - <a href="https://www.themoviedb.org/person/5743128-gael-maignan" target="_blank">TMDB</a> - <a href="https://letterboxd.com/producer/gael-maignan/" target="_blank">Letterboxd</a></p>
+      </div>
+    </section>
+
+
+
+  </main>
+
+</body>
+</html>
